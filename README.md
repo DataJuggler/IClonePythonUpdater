@@ -43,7 +43,7 @@ Create a new FindAndReplaceItem, and set it's values for Find and Replace.
 I am sure there will be some replacements or advanced search and replace features needed to make this more useful. I just wanted to stub 
 something out and create a work in progress.
 
-If something doesn't work, create an Issue here on this Project's Issue tab and I will try and fix it. Please attached the file that is giving you a problem.
+If something doesn't work, create an Issue here on this Project's Issue tab and I will try and fix it. Please attach the file that is giving you a problem.
 If the file you need converted is private, you may send it to me via email. My email is listed here on Git Hub or you can email me at info@datajuggler.com 
 
 If it helps you let me know by leaving a star.
