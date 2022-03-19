@@ -92,13 +92,13 @@ namespace IClonePythonUpdater
                             TextLine textLine4 = new TextLine("if ap_version == 8:");
                             TextLine textLine5 = new TextLine("    rl_plugin_info = {\"ap\": \"iClone\", \"ap_version\": \"8.0\"}");
 
-                            // insert in reverse order
-                            lines.Insert(firstBlankLine, blankLine);
+                            // insert in reverse order                            
                             lines.Insert(firstBlankLine, textLine5);
                             lines.Insert(firstBlankLine, textLine4);
                             lines.Insert(firstBlankLine, textLine3);
                             lines.Insert(firstBlankLine, textLine2);
-                            lines.Insert(firstBlankLine, textLine);
+                            lines.Insert(firstBlankLine, textLine);                            
+                            lines.Insert(firstBlankLine, blankLine);
 
                             // We have made replacements
                             replacementsMade++;
