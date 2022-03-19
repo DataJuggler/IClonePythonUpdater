@@ -78,6 +78,32 @@ namespace IClonePythonUpdater
                         Graph.Value = 0;
                         Graph.Visible = true;
 
+                        // find the first blank line
+                        int firstBlankLine = FindFirstBlankLineIndex(lines);
+
+                        // if the first blank line was found
+                        if (firstBlankLine > 0)
+                        {
+                            // insert this for every conversion
+                            TextLine blankLine = new TextLine("");
+                            TextLine textLine = new TextLine("ap_version=RLPy.RApplication.GetProductVersion()[0]");
+                            TextLine textLine2 = new TextLine("if ap_version == 7:");
+                            TextLine textLine3 = new TextLine("    rl_plugin_info = {\"ap\": \"iClone\", \"ap_version\": \"7.0\"}");
+                            TextLine textLine4 = new TextLine("if ap_version == 8:");
+                            TextLine textLine5 = new TextLine("    rl_plugin_info = {\"ap\": \"iClone\", \"ap_version\": \"8.0\"}");
+
+                            // insert in reverse order
+                            lines.Insert(firstBlankLine, blankLine);
+                            lines.Insert(firstBlankLine, textLine5);
+                            lines.Insert(firstBlankLine, textLine4);
+                            lines.Insert(firstBlankLine, textLine3);
+                            lines.Insert(firstBlankLine, textLine2);
+                            lines.Insert(firstBlankLine, textLine);
+
+                            // We have made replacements
+                            replacementsMade++;
+                        }
+
                         // Iterate the collection of FindAndReplaceItem objects
                         foreach (FindAndReplaceItem item in FindAndReplaceItems)
                         {
@@ -170,6 +196,44 @@ namespace IClonePythonUpdater
 
          #region Methods
             
+            #region FindFirstBlankLineIndex(List<TextLine> lines)
+            /// <summary>
+            /// returns the First Blank Line Index
+            /// </summary>
+            public int FindFirstBlankLineIndex(List<TextLine> lines)
+            {
+                // initial value
+                int firstBlankLineIndex = -1;
+
+                // local
+                int index = -1;
+
+                // If the lines collection exists and has one or more items
+                if (ListHelper.HasOneOrMoreItems(lines))
+                {
+                    // Iterate the collection of TextLine objects
+                    foreach (TextLine line in lines)
+                    {
+                        // Increment the value for index
+                        index++;
+
+                        // if this line is blank
+                        if (line.Text.Trim().Length == 0)
+                        {
+                            // set the return value
+                            firstBlankLineIndex = index;
+
+                            // break out of loop
+                            break;
+                        }
+                    }
+                }
+                
+                // return value
+                return firstBlankLineIndex;
+            }
+            #endregion
+            
             #region Init()
             /// <summary>
             ///  This method performs initializations for this object.
@@ -219,7 +283,7 @@ namespace IClonePythonUpdater
                 // Create a new instance of a 'FindAndReplaceItem' object.
                 findAndReplaceItem = new FindAndReplaceItem();
                 findAndReplaceItem.Find = "RTime(";
-                findAndReplaceItem.Replace = "RLPy.RTime.FromValue(";
+                findAndReplaceItem.Replace = "RTime.FromValue(";
 
                 // Add this item
                 FindAndReplaceItems.Add(findAndReplaceItem);
