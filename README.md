@@ -10,7 +10,9 @@ Instructions To use:
 Note: instructions are more detailed as some Python programmers from IClone Discord and Forums may not be familiar with Visual Studio or C#.
 
 Clone the solution:
-Click the Clone button, which copies the Git Url to your clipboard, or download the solution as a zip file and extract to a folder.
+1. Click the Clone button, which copies the Git Url to your clipboard, then open Visual Studio and select Clone Project, and paste in the Git Url.
+or 
+2. download the solution as a zip file and extract to a folder.
 
 After cloning, open IClonePythonUpdater.sln
 
@@ -18,7 +20,7 @@ This will open the project.
 
 To Run: Press F5 or on the Debug Menu - Start Debugging. 
 
-You will notice the app prepopulates the Output Folder. This is hard coded to a folder on my machine. I left this in on purpose, but you can change this file.
+You will notice the app prepopulates the Output Folder. This is hard coded to a folder on my machine. I left this in on purpose, but you can change this value.
 Open the file App.config by double clicking on it. This will bring up the Application Configuration file. 
 
 Change the value for Output Folder to the folder you want:
